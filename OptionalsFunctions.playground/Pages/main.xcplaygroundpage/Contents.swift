@@ -13,10 +13,10 @@
 /*: question1
  ### 1. What is the type of the variable `petName` declared below? What is its value?
  */
-var petName = "Scooter the Turtle 🐢"
+var petName = "Scooter the Turtle "
 
 
-
+//petName is a String
 
 
 
@@ -28,7 +28,7 @@ var petName = "Scooter the Turtle 🐢"
 var otherPetName: String?
 
 
-
+//otherPetName is a string optional
 
 
 
@@ -36,8 +36,7 @@ var otherPetName: String?
 /*: question3
  ### 3. What is the _current value_ of `otherPetName`?
  */
-
-
+//The current value of otherPetName is nil
 
 
 
@@ -50,7 +49,7 @@ var otherPetName: String?
 var thirdPetName: String? = nil
 
 
-
+//thirdPetName is a string optional with a value of nil
 
 
 
@@ -62,7 +61,9 @@ var thirdPetName: String? = nil
  */
 // write your code here
 
+thirdPetName = "Yipee the Dog"
 
+//thirdPetName can be assigned a String value. After assigning it a value, it is still a string optional.
 
 
 
@@ -76,7 +77,7 @@ var thirdPetName: String? = nil
  */
 // write your code here
 
-
+print(thirdPetName) //It prints Optional("Yipee") to the console.
 
 
 
@@ -89,9 +90,11 @@ var thirdPetName: String? = nil
 // write your code here
 
 
+if let thirdPetName = thirdPetName {
+    print(thirdPetName)
+}
 
-
-
+//Here I created a String with the value of the String optional's content
 
 
 
@@ -100,7 +103,15 @@ var thirdPetName: String? = nil
  */
 // write your code here
 
-
+func printPetName(name: String?) {
+    
+    if let name = name {
+        print("\(name)")
+    }
+    else {
+        print("There is no pet name!")
+    }
+}
 
 
 
@@ -113,8 +124,11 @@ var thirdPetName: String? = nil
  // write your code here
 
 
+printPetName(thirdPetName)
 
+printPetName(otherPetName)
 
+printPetName(thirdPetName)
 
 
 
@@ -125,7 +139,10 @@ var thirdPetName: String? = nil
 // write your code here
 
 
+func minimum(bunchOfInts: [Int]) -> Int {
 
+    return bunchOfInts.sort()[0] // This line sorts the array from smallest to largest and returns the Int at index 0 (or the smallest Int)
+}
 
 
 
@@ -138,6 +155,7 @@ let values1 = [4, 12, 3, 2, 9, 14, 11]
 // write your code here
 
 
+minimum(values1) // I expected to get back a 2 and got a 2.
 
 
 
@@ -151,6 +169,10 @@ let values2: [Int] = []
 // write your code here
 
 
+//ERROR! The index is now out of range because the array is empty.
+
+//minimum(values2)
+
 
 
 
@@ -163,10 +185,17 @@ let values2: [Int] = []
 // write your code here
 
 
+func maybeMinimum(bunchOfInts: [Int]) -> Int? {
+    
+    if bunchOfInts.isEmpty {
+        return nil
+    }
+    
+    else {
 
-
-
-
+        return bunchOfInts.sort()[0]
+}
+}
 
 
 
@@ -176,9 +205,7 @@ let values2: [Int] = []
 // write your code here
 
 
-
-
-
+maybeMinimum(values1) // The return should be 2 and it is
 
 
 
@@ -187,10 +214,7 @@ let values2: [Int] = []
  */
 // write your code here
 
-
-
-
-
+maybeMinimum(values2) // The return should be nil and it is 
 
 
 
